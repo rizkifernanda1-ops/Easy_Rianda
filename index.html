@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penawaran Program Akselerator AI</title>
+    <!-- Memuat Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Menggunakan font Inter --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a; /* Latar belakang gelap */
+            color: #e0e0e0; /* Teks terang */
+        }
+        /* Penyesuaian untuk menu ticker agar sesuai dengan tema gelap */
+        .bg-gray-900 {
+            background-color: #2a2a2a;
+        }
+        .border-gray-700 {
+            border-color: #444444;
+        }
+        
+        /* Gaya kartu baru */
+        .pricing-card {
+            background-color: #2a2a2a; /* Warna latar belakang kartu gelap */
+            border-radius: 1.5rem; /* Sudut lebih membulat */
+            padding: 2.5rem; /* Padding lebih besar */
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #444444; /* Border halus */
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden; /* Untuk efek glow */
+        }
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            right: -100px;
+            bottom: -100px;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 255, 0, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none; /* Pastikan tidak mengganggu interaksi */
+        }
+        .pricing-card:hover::before {
+            opacity: 1;
+        }
+
+        .highlight-card {
+            border-color: #00ff00; /* Border hijau untuk yang disorot */
+            box-shadow: 0 0 40px rgba(0, 255, 0, 0.15), inset 0 0 10px rgba(0, 255, 0, 0.05);
+        }
+        .highlight-card .button-primary {
+            background-color: #00ff00; /* Tombol hijau */
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+        .highlight-card .button-primary:hover {
+            background-color: #39ff14; /* Hover tombol hijau */
+        }
+        
+        .button-secondary {
+            background-color: #333333; /* Tombol abu-abu gelap */
+            color: #e0e0e0;
+            font-weight: 600;
+        }
+        .button-secondary:hover {
+            background-color: #555555;
+        }
+
+        /* Teks harga */
+        .price-text {
+            font-size: 3.5rem; /* Lebih besar dari sebelumnya */
+            font-weight: 800;
+            color: #e0e0e0;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        .price-text-secondary {
+            font-size: 1.5rem;
+            color: #888888;
+        }
+        .description-text {
+            color: #aaaaaa;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2.5rem;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+        .feature-icon {
+            color: #00ff00; /* Ikon centang hijau */
+            margin-right: 0.75rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            flex-shrink: 0;
+        }
+        .button-wrapper {
+            margin-top: auto; /* Dorong tombol ke bawah */
+        }
+    </style>
+</head>
+<body class="bg-[#1a1a1a] text-gray-200 min-h-screen antialiased">
+
+    <!-- Navigasi Utama --><nav class="sticky top-0 z-50 bg-[#2a2a2a]/90 backdrop-blur-sm border-b border-gray-700 shadow-sm">
+        <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Brand --><div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-lime-400">
+                        Program Mahir Affiliate
+                    </a>
+                </div>
+                
+                <!-- Menu Links & CTA --><div class="hidden sm:flex sm:items-center sm:justify-between sm:flex-1 sm:ml-6">
+                    <!-- Tautan Menu Utama --><div class="flex space-x-1">
+                        <!-- Item Dropdown Contoh --><div class="relative group">
+                            <button class="text-gray-400 hover:text-white transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium flex items-center">
+                                <span>Produk</span>
+                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <!-- Menu Dropdown --><div class="absolute z-10 w-48 mt-1 bg-[#2a2a2a] border border-gray-700 rounded-md shadow-lg hidden group-hover:block">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-[#3a3a3a] hover:text-white">Generator Cerita Visual AI</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-[#3a3a3a] hover:text-white">Produk B</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-[#3a3a3a] hover:text-white">Produk C</a>
+                            </div>
+                        </div>
+
+                        <a href="#solusi" class="text-gray-400 hover:text-white transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">
+                            Solusi
+                        </a>
+                        <a href="#sumberdaya" class="text-gray-400 hover:text-white transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">
+                            Sumber Daya
+                        </a>
+                        <a href="#harga" class="text-gray-400 hover:text-white transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">
+                            Harga
+                        </a>
+                    </div>
+                    
+                    <!-- Tautan Aksi (Login & CTA) --><div class="flex items-center space-x-4">
+                         <a href="#login" class="text-gray-400 hover:text-white transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">
+                            Masuk
+                        </a>
+                        <a href="#" class="text-black bg-lime-400 hover:bg-lime-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all duration-300 shadow-md hover:shadow-lime-400/30">
+                            Gabung Accelerator
+                        </a>
+                    </div>
+                </div>
+                <!-- Tombol hamburger mobile bisa ditambahkan di sini --></div>
+        </div>
+    </nav>
+    <!-- Akhir Navigasi Utama --><!-- Menu Ticker --><div class="bg-gray-900 text-white overflow-hidden py-2.5 border-b border-gray-700">
+        <div class="flex animate-scroll-left whitespace-nowrap">
+            <div class="flex items-center space-x-8 px-4 flex-shrink-0">
+                <span class="font-medium">Bangun Lebih Cepat dengan AI</span>
+                <span class="text-gray-400">&bull;</span>
+                <span class="font-medium">Dapatkan Inspirasi dengan AI</span>
+                <span class="text-gray-400">&bull;</span>
+                <span class="font-medium">Bangun Lebih Cepat dengan AI</span>
+                <span class="text-gray-400">&bull;</span>
+                <span class="font-medium">Dapatkan Inspirasi dengan AI</span>
+                <span class="text-gray-400">&bull;</span>
+                <span class="font-medium">Bangun Lebih Cepat dengan AI</span>
+                <span class="text-gray-400">&bull;</span>
+                <span class="font-medium">Dapatkan Inspirasi dengan AI</span>
+            </div>
+            <div class="flex items-center space-x-8 px-4 flex-shrink-0">
+                <span class="font-medium">Bangun Lebih Cepat dengan AI</span>
+                <span class="text-gray-400">&bull;</span>
+                <span class="font-medium">Dapatkan Inspirasi dengan AI</span>
+                <span class="text-gray-400">&bull;</span>
+                <span class="font-medium">Bangun Lebih Cepat dengan AI</span>
+                <span class="text-gray-400">&bull;</span>
+                <span class="font-medium">Dapatkan Inspirasi dengan AI</span>
+                <span class="text-gray-400">&bull;</span>
+                <span class="font-medium">Bangun Lebih Cepat dengan AI</span>
+                <span class="text-gray-400">&bull;</span>
+                <span class="font-medium">Dapatkan Inspirasi dengan AI</span>
+            </div>
+        </div>
+    </div>
+    <!-- Akhir Menu Ticker --><!-- Kontainer Utama --><div class="container mx-auto max-w-7xl px-4 py-16 sm:py-24">
+
+        <!-- Header --><header id="fitur" class="text-center mb-16 pt-16 sm:pt-24">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-lime-400 mb-4">
+                Program Akselerator Bisnis AI Anda
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+                Pilih paket yang tepat untuk meluncurkan, menjalankan, dan mengembangkan bisnis viral Anda berikutnya dengan kekuatan AI.
+            </p>
+        </header>
+
+        <!-- Bagian Video --><section id="video" class="mb-16 sm:mb-24 max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-center text-gray-100 mb-8 sm:mb-12">
+                Lihat Cara Kerjanya
+            </h2>
+            <div class="relative w-full bg-[#2a2a2a] border border-gray-700 rounded-xl shadow-xl overflow-hidden" style="padding-bottom: 56.25%;">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-center text-gray-500 p-4">
+                        <svg class="w-16 h-16 mx-auto text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                        <p class="mt-2 text-xl font-semibold">Video Perkenalan Anda</p>
+                        <p class="text-sm">Tempat untuk video (16:9)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid Paket Harga (Gaya Baru) --><div id="harga" class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-stretch max-w-7xl mx-auto px-4">
+
+            <!-- Paket 0: Gratis --><div class="pricing-card">
+                <div class="flex-grow">
+                    <h3 class="text-xl font-bold text-center text-green-400 mb-2">Gratis</h3>
+                    <p class="text-gray-500 text-center text-sm mb-6">Cocok untuk prototipe & proyek hobi.</p>
+                    
+                    <div class="text-center mb-8">
+                        <span class="price-text text-green-400">Rp 0</span>
+                        <span class="text-lg text-gray-500 block"></span>
+                    </div>
+
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Akses terbatas ke Generator Cerita Visual AI</span>
+                        </li>
+                        <li class="feature-item">
+                            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Konten & alat AI dasar</span>
+                        </li>
+                        <li class="feature-item">
+                            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Dukungan Komunitas</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="button-wrapper">
+                    <a href="#" class="w-full text-center py-3 px-6 rounded-lg transition-colors duration-300 button-primary bg-green-500 hover:bg-green-400 text-black">
+                        Mulai Sekarang
+                    </a>
+                </div>
+            </div>
+
+            <!-- Paket 1: Kursus Video (Tier Rendah) --><div class="pricing-card">
+                <div class="flex-grow">
+                    <h3 class="text-xl font-bold text-center text-gray-100 mb-2">Kursus Video</h3>
+                    <p class="text-gray-500 text-center text-sm mb-6">Mulai cepat dengan video kursus lengkap.</p>
+                    
+                    <div class="text-center mb-8">
+                        <span class="price-text">Rp 4.699.000</span>
+                        <span class="text-lg text-gray-500 block">Sekali Bayar</span>
+                    </div>
+
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Video series: "Memulai Bisnis dalam 30 Hari dengan AI dan Menjadikannya Viral!"</span>
+                        </li>
+                        <li class="feature-item">
+                            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span><strong>Membangun Micro-SaaS:</strong> Dapatkan seluruh *codebase*.</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="button-wrapper">
+                    <a href="#" class="w-full text-center py-3 px-6 rounded-lg transition-colors duration-300 button-secondary">
+                        Beli Kursus
+                    </a>
+                </div>
+            </div>
+
+            <!-- Paket 2: Accelerator (Tier Menengah - DISOROT) --><div class="pricing-card highlight-card relative lg:scale-[1.03]">
+                 <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-green-500 text-black text-sm font-bold px-4 py-1 rounded-full shadow-lg">
+                    PALING POPULER
+                </span>
+                <div class="flex-grow">
+                    <h3 class="text-xl font-bold text-center text-gray-100 mb-2">Accelerator</h3>
+                    <p class="text-gray-500 text-center text-sm mb-6">Paket lengkap untuk bimbingan & eksekusi.</p>
+                    
+                    <div class="text-center mb-8">
+                        <span class="price-text">Rp 2.949.000</span>
+                        <span class="text-lg text-gray-500 block">/ bulan</span>
+                    </div>
+
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span><strong>GPT Kustom:</strong> Easy_WebRianda 24/7</span>
+                        </li>
+                        <li class="feature-item">
+                            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span><strong>1 Panggilan Bulanan</strong> (Grup/Personal)</span>
+                        </li>
+                        <li class="feature-item">
+                            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Termasuk Video Series "Bisnis Viral 30 Hari"</span>
+                        </li>
+                         <li class="feature-item">
+                            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span><strong>Membangun Micro-SaaS:</strong> Dapatkan seluruh *codebase*.</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="button-wrapper">
+                    <a href="#" class="w-full text-center py-3 px-6 rounded-lg transition-colors duration-300 button-primary">
+                        Gabung Accelerator
+                    </a>
+                </div>
+            </div>
+
+            <!-- Paket 3: High Ticket (Tier Tinggi) --><div class="pricing-card">
+                <div class="flex-grow">
+                    <h3 class="text-xl font-bold text-center text-gray-100 mb-2">Coaching High-Ticket</h3>
+                    <p class="text-gray-500 text-center text-sm mb-6">Akses pribadi langsung ke Easy_WebRianda.</p>
+                    
+                    <div class="text-center mb-8">
+                        <span class="price-text">Rp 77.999.000</span>
+                        <span class="text-lg text-gray-500 block">selama 3 Bulan</span>
+                    </div>
+
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span><strong>Pelatihan pribadi setiap minggu</strong> dengan Easy_WebRianda</span>
+                        </li>
+                        <li class="feature-item">
+                            <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Akses prioritas 24/7 ke Easy_WebRianda</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="button-wrapper">
+                    <a href="#" class="w-full text-center py-3 px-6 rounded-lg transition-colors duration-300 button-secondary">
+                        Daftar Konsultasi
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer --><footer class="text-center text-gray-500 mt-20 py-10">
+            &copy; 2025 Program Easy_WebRianda. Semua hak dilindungi undang-undang.
+        </footer>
+
+    </div>
+
+    <script>
+        // Script untuk efek glow pada hover kartu
+        document.querySelectorAll('.pricing-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x / rect.width * 100}%`);
+                card.style.setProperty('--mouse-y', `${y / rect.height * 100}%`);
+            });
+        });
+    </script>
+
+</body>
+</html>
+
